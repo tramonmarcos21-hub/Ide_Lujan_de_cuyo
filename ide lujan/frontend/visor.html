@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor Geográfico Oficial - IDE Luján de Cuyo (IDERA)</title>
+  
+  <!-- Estilos base y fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- IDE Luján Styles -->
+  <link rel="stylesheet" href="css/ide-styles.css">
+</head>
+<body class="visor-body">
+
+  <!-- CABECERA SUPERIOR DEL VISOR -->
+  <header class="navbar" style="height: 56px;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <button id="toggle-sidebar" class="btn-icon" style="color: #fff; font-size: 1.1rem;" title="Alternar panel de capas">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a href="index.html" class="brand-container">
+        <div class="brand-logo-badge" style="width: 36px; height: 36px; font-size: 1rem;">LC</div>
+        <div class="brand-text">
+          <h1 style="font-size: 1.05rem;">Visor IDE Luján de Cuyo</h1>
+          <p style="font-size: 0.68rem;">SISTEMA OFICIAL IDERA</p>
+        </div>
+      </a>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <span class="badge-idera"><i class="fa-solid fa-satellite-dish"></i> POSGAR 94 / Faja 2 (EPSG:22172)</span>
+      <a href="index.html" class="nav-link btn-sm"><i class="fa-solid fa-arrow-left"></i> Portal IDE</a>
+      <a href="https://ide.mendoza.gov.ar/" target="_blank" class="nav-link btn-sm"><i class="fa-solid fa-map-location-dot"></i> IDE Mendoza</a>
+      <a href="https://lujan3d.lujandecuyo.gob.ar/" target="_blank" class="btn btn-malbec btn-sm"><i class="fa-solid fa-cubes"></i> Luján 3D</a>
+    </div>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL DEL VISOR -->
+  <div class="visor-container">
+
+    <!-- PANEL LATERAL (ÁRBOL DE CAPAS Y HERRAMIENTAS) -->
+    <aside class="visor-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h3><i class="fa-solid fa-layer-group" style="color: var(--lujan-cyan);"></i> Catálogo de Capas</h3>
+        <button id="close-sidebar" class="btn-icon" title="Cerrar panel"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-tabs">
+        <button class="sidebar-tab active" data-tab="layers"><i class="fa-solid fa-layers"></i> Capas</button>
+        <button class="sidebar-tab" data-tab="basemaps"><i class="fa-solid fa-map"></i> Mapa Base</button>
+        <button class="sidebar-tab" data-tab="legend"><i class="fa-solid fa-list-check"></i> Leyenda</button>
+      </div>
+
+      <div class="sidebar-content" id="tab-content-layers">
+        <!-- GRUPO: MARCO POLÍTICO-ADMINISTRATIVO -->
+        <div class="layer-category">
+          <div class="layer-category-title" onclick="toggleCategory('cat-adm')">
+            <span><i class="fa-solid fa-landmark"></i> Límites y Distritos</span>
+            <i class="fa-solid fa-chevron-down" id="cat-adm-icon"></i>
+          </div>
+          <div class="layer-category-body" id="cat-adm">
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-distritos" checked onchange="toggleLayer('distritos')">
+                  <span class="layer-legend-dot" style="background: rgba(0, 51, 102, 0.2); border-color: #003366;"></span>
+                  15 Distritos Departamentales
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('distritos')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                  <button class="btn-icon" onclick="openMetadata('adm_distritos')" title="Metadatos IDERA"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+              </div>
+              <div class="opacity-slider-container">
+                <span>Opacidad:</span>
+                <input type="range" min="0" max="1" step="0.1" value="0.8" class="opacity-slider" onchange="setLayerOpacity('distritos', this.value)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO: CATASTRO Y PARCELAS -->
+        <div class="layer-category">
+          <div class="layer-category-title" onclick="toggleCategory('cat-catastro')">
+            <span><i class="fa-solid fa-draw-polygon"></i> Catastro Parcelario</span>
+            <i class="fa-solid fa-chevron-down" id="cat-catastro-icon"></i>
+          </div>
+          <div class="layer-category-body" id="cat-catastro">
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-parcelas" checked onchange="toggleLayer('parcelas')">
+                  <span class="layer-legend-dot" style="background: rgba(255, 215, 0, 0.4); border-color: #B38600;"></span>
+                  Parcelas y Padrones (Testigo)
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('parcelas')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                  <button class="btn-icon" onclick="openMetadata('cat_parcelas')" title="Metadatos IDERA"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+              </div>
+              <div class="opacity-slider-container">
+                <span>Opacidad:</span>
+                <input type="range" min="0" max="1" step="0.1" value="0.7" class="opacity-slider" onchange="setLayerOpacity('parcelas', this.value)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO: ZONIFICACIÓN Y ORDENAMIENTO -->
+        <div class="layer-category">
+          <div class="layer-category-title" onclick="toggleCategory('cat-urb')">
+            <span><i class="fa-solid fa-building-user"></i> Zonificación y Usos (POT)</span>
+            <i class="fa-solid fa-chevron-down" id="cat-urb-icon"></i>
+          </div>
+          <div class="layer-category-body" id="cat-urb">
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-zonificacion" checked onchange="toggleLayer('zonificacion')">
+                  <span class="layer-legend-dot" style="background: rgba(231, 76, 60, 0.4); border-color: #c0392b;"></span>
+                  Zonas Código Urbano (Ord. 13.820)
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('zonificacion')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                  <button class="btn-icon" onclick="openMetadata('urb_zonificacion')" title="Metadatos IDERA"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+              </div>
+              <div class="opacity-slider-container">
+                <span>Opacidad:</span>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" class="opacity-slider" onchange="setLayerOpacity('zonificacion', this.value)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO: AMBIENTE Y RECURSOS HÍDRICOS -->
+        <div class="layer-category">
+          <div class="layer-category-title" onclick="toggleCategory('cat-env')">
+            <span><i class="fa-solid fa-water"></i> Red Hídrica y Canales</span>
+            <i class="fa-solid fa-chevron-down" id="cat-env-icon"></i>
+          </div>
+          <div class="layer-category-body" id="cat-env">
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-red-hidrica" checked onchange="toggleLayer('red_hidrica')">
+                  <span class="layer-legend-dot" style="background: #0066CC; border-color: #004080; height: 4px;"></span>
+                  Cauces y Red de Riego DGI (7.149 tramos)
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('red_hidrica')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                  <button class="btn-icon" onclick="openMetadata('env_red_hidrica')" title="Metadatos IDERA"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+              </div>
+              <div class="opacity-slider-container">
+                <span>Opacidad:</span>
+                <input type="range" min="0" max="1" step="0.1" value="0.9" class="opacity-slider" onchange="setLayerOpacity('red_hidrica', this.value)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO: BODEGAS Y ENOTURISMO -->
+        <div class="layer-category">
+          <div class="layer-category-title" onclick="toggleCategory('cat-tur')">
+            <span><i class="fa-solid fa-wine-glass"></i> Bodegas y Enoturismo</span>
+            <i class="fa-solid fa-chevron-down" id="cat-tur-icon"></i>
+          </div>
+          <div class="layer-category-body" id="cat-tur">
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-bodegas" checked onchange="toggleLayer('bodegas')">
+                  <span class="layer-legend-dot" style="background: #722F37; border-radius: 50%;"></span>
+                  Bodegas y Caminos del Vino
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('bodegas')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                  <button class="btn-icon" onclick="openMetadata('tur_bodegas')" title="Metadatos IDERA"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRUPO: EQUIPAMIENTO COMUNITARIO -->
+        <div class="layer-category">
+          <div class="layer-category-title" onclick="toggleCategory('cat-soc')">
+            <span><i class="fa-solid fa-hospital"></i> Equipamiento y Servicios</span>
+            <i class="fa-solid fa-chevron-down" id="cat-soc-icon"></i>
+          </div>
+          <div class="layer-category-body" id="cat-soc">
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-equipamiento" checked onchange="toggleLayer('equipamiento')">
+                  <span class="layer-legend-dot" style="background: #0284c7; border-radius: 50%;"></span>
+                  Salud, Educación y Seguridad
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('equipamiento')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                  <button class="btn-icon" onclick="openMetadata('soc_equipamiento')" title="Metadatos IDERA"><i class="fa-solid fa-circle-info"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="layer-item">
+              <div class="layer-item-row">
+                <label class="layer-label">
+                  <input type="checkbox" id="chk-servicios" checked onchange="toggleLayer('servicios')">
+                  <span class="layer-legend-dot" style="background: #16a34a; border-radius: 50%;"></span>
+                  Aguas Luján & Puntos Verdes
+                </label>
+                <div class="layer-actions">
+                  <button class="btn-icon" onclick="zoomToLayer('servicios')" title="Zoom a la capa"><i class="fa-solid fa-expand"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA MAPAS BASE -->
+      <div class="sidebar-content" id="tab-content-basemaps" style="display: none;">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <div class="basemap-option" onclick="setBaseMap('argenmap')" style="cursor: pointer; padding: 0.75rem; border: 2px solid var(--lujan-cyan); border-radius: 8px; background: #f0f9ff;">
+            <div style="font-weight: 700; color: var(--lujan-primary);"><i class="fa-solid fa-shield-halved"></i> Argenmap (IGN / IDERA)</div>
+            <div style="font-size: 0.75rem; color: var(--lujan-gray);">Mapa oficial de la República Argentina según Ley 22.963</div>
+          </div>
+          <div class="basemap-option" onclick="setBaseMap('osm')" style="cursor: pointer; padding: 0.75rem; border: 1px solid var(--lujan-border); border-radius: 8px;">
+            <div style="font-weight: 700; color: var(--lujan-dark);"><i class="fa-solid fa-map-location"></i> OpenStreetMap Estándar</div>
+            <div style="font-size: 0.75rem; color: var(--lujan-gray);">Cartografía colaborativa global</div>
+          </div>
+          <div class="basemap-option" onclick="setBaseMap('satellite')" style="cursor: pointer; padding: 0.75rem; border: 1px solid var(--lujan-border); border-radius: 8px;">
+            <div style="font-weight: 700; color: var(--lujan-dark);"><i class="fa-solid fa-satellite"></i> Satélite Híbrido (ESRI)</div>
+            <div style="font-size: 0.75rem; color: var(--lujan-gray);">Imágenes satelitales con etiquetas de calles</div>
+          </div>
+          <div class="basemap-option" onclick="setBaseMap('carto')" style="cursor: pointer; padding: 0.75rem; border: 1px solid var(--lujan-border); border-radius: 8px;">
+            <div style="font-weight: 700; color: var(--lujan-dark);"><i class="fa-solid fa-circle-half-stroke"></i> CartoDB Positron (Claro)</div>
+            <div style="font-size: 0.75rem; color: var(--lujan-gray);">Fondo neutro ideal para visualizar zonificación</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PESTAÑA LEYENDA -->
+      <div class="sidebar-content" id="tab-content-legend" style="display: none;">
+        <h4 style="font-size: 0.9rem; color: var(--lujan-primary); margin-bottom: 0.75rem;">Simbología Estandarizada IDERA</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.8rem;">
+          <div><strong>Zonificación Código Urbano:</strong></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #e74c3c; border-radius: 3px;"></span> R1 - Residencial Central</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #f39c12; border-radius: 3px;"></span> R3 - Parque Residencial (Chacras)</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #9b59b6; border-radius: 3px;"></span> C1 - Corredor Comercial (Carrodilla)</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #27ae60; border-radius: 3px;"></span> R-TUR - Turístico Vitivinícola (Agrelo)</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #34495e; border-radius: 3px;"></span> IND - Parque Industrial (Perdriel)</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #16a085; border-radius: 3px;"></span> AP-PIED - Protección Piedemonte</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 16px; height: 16px; background: #2980b9; border-radius: 3px;"></span> ZT-POT - Dique Potrerillos</div>
+          <hr style="margin: 0.5rem 0; border: none; border-top: 1px solid var(--lujan-border);">
+          <div><strong>Red Hídrica:</strong></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 20px; height: 3px; background: #0066CC;"></span> Río Mendoza / Cauce Principal</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;"><span style="width: 20px; height: 1.5px; background: #3399FF;"></span> Canal de Riego / Colector</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL: MAPA Y HERRAMIENTAS -->
+    <main class="visor-main" style="flex: 1; position: relative; height: 100%;">
+      
+      <!-- TOP BAR: BUSCADOR Y HERRAMIENTAS -->
+      <div class="map-top-bar">
+        <div class="search-box-container">
+          <i class="fa-solid fa-magnifying-glass" style="color: var(--lujan-gray); margin-right: 0.4rem;"></i>
+          <input type="text" id="map-search" class="search-input" placeholder="Buscar por padrón, nomenclatura, distrito o bodega...">
+          <button id="search-clear" class="btn-icon" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+          <div class="search-results-dropdown" id="search-results"></div>
+        </div>
+
+        <div class="map-tools-bar">
+          <button class="tool-btn" id="btn-measure-dist" onclick="toggleMeasure('distance')">
+            <i class="fa-solid fa-ruler"></i> Medir Distancia
+          </button>
+          <button class="tool-btn" id="btn-measure-area" onclick="toggleMeasure('area')">
+            <i class="fa-solid fa-draw-polygon"></i> Medir Área
+          </button>
+          <button class="tool-btn" id="btn-clear-measure" onclick="clearMeasurements()" style="display: none; color: #e11d48;">
+            <i class="fa-solid fa-trash-can"></i> Limpiar
+          </button>
+          <button class="tool-btn" onclick="exportMapImage()">
+            <i class="fa-solid fa-camera"></i> Captura / Imprimir
+          </button>
+          <button class="tool-btn" onclick="resetMapExtent()">
+            <i class="fa-solid fa-compress"></i> Extensión Luján
+          </button>
+        </div>
+      </div>
+
+      <!-- MAPA LEAFLET CANVAS -->
+      <div id="map"></div>
+
+      <!-- DRAWER DERECHO: IDENTIFICACIÓN DE ATRIBUTOS (GETFEATUREINFO) -->
+      <div class="feature-info-drawer" id="feature-drawer">
+        <div class="drawer-header">
+          <h3 id="drawer-title">Información de la Entidad</h3>
+          <button class="btn-icon" style="color: #fff;" onclick="closeDrawer()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-body" id="drawer-content">
+          <p style="color: var(--lujan-gray);">Haz clic sobre cualquier elemento del mapa (parcela, distrito, cauce o bodega) para consultar su ficha técnica oficial.</p>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- BARRA INFERIOR DE COORDENADAS -->
+  <footer class="visor-footer">
+    <div id="footer-coords"><i class="fa-solid fa-crosshairs"></i> Lat: -33.0550 | Lon: -68.8780 | POSGAR 94 Faja 2 (EPSG:22172): X: 6.341.200 m | Y: 2.511.400 m</div>
+    <div>Municipalidad de Luján de Cuyo | Nodo IDERA | Versión 2.0</div>
+  </footer>
+
+  <!-- MODAL DE METADATOS IDERA -->
+  <div class="modal-overlay" id="metadata-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-meta-title"><i class="fa-solid fa-file-lines" style="color: var(--lujan-secondary);"></i> Ficha de Metadatos IDERA</h3>
+        <button class="btn-icon" onclick="closeMetadata()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="modal-meta-content">
+        <!-- Contenido dinámico -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="closeMetadata()">Cerrar</button>
+        <button class="btn btn-primary btn-sm" id="btn-download-geojson"><i class="fa-solid fa-download"></i> Descargar GeoJSON</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Visor Application Logic -->
+  <script src="js/data-bundle.js"></script>
+  <script src="js/visor.js"></script>
+</body>
+</html>

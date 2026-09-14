@@ -1,0 +1,49 @@
+==============================================================================
+   INSTRUCCIONES PARA SUBIR LA IDE DE LUJÁN DE CUYO A GITHUB
+==============================================================================
+
+Tienes 3 formas muy sencillas para subir todo este código a tu cuenta de GitHub:
+
+------------------------------------------------------------------------------
+OPCIÓN 1: AUTOMÁTICA CON EL ARCHIVO .BAT (Recomendada si tienes Git instalado)
+------------------------------------------------------------------------------
+1. Ingresa en tu navegador a: https://github.com/new
+2. Dale un nombre a tu repositorio (por ejemplo: "ide-lujan-cuyo").
+3. Deja desmarcadas las opciones de "Add a README file" y haz clic en "Create repository".
+4. Copia la URL que te da GitHub (ejemplo: https://github.com/tu-usuario/ide-lujan-cuyo.git).
+5. En esta carpeta "ide lujan" de tu Escritorio, haz doble clic en "SUBIR_A_GITHUB.bat".
+6. Pega la URL copiada cuando te lo pida y presiona Enter. ¡Listo!
+
+------------------------------------------------------------------------------
+OPCIÓN 2: DESDE LA WEB DE GITHUB (Sin necesidad de instalar Git)
+------------------------------------------------------------------------------
+1. Ingresa a https://github.com/new y crea tu repositorio.
+2. En la pantalla de tu nuevo repositorio vacío, haz clic en el enlace que dice:
+   "uploading an existing file"
+3. Arrastra y suelta todos los archivos de esta carpeta (o arrastra el archivo "ide_lujan_cuyo_idera.zip").
+4. Haz clic en el botón verde "Commit changes" abajo de la página.
+
+------------------------------------------------------------------------------
+OPCIÓN 3: POR CONSOLA (Git Bash, PowerShell o CMD)
+------------------------------------------------------------------------------
+Abre una terminal en esta carpeta y ejecuta:
+
+    git init
+    git add .
+    git commit -m "feat: IDE Lujan de Cuyo - IDERA / GeoServer - CRS EPSG:22172"
+    git branch -M main
+    git remote add origin https://github.com/TU_USUARIO/TU_REPOSITORIO.git
+    git push -u origin main
+
+==============================================================================
+CONTENIDO DEL PROYECTO:
+==============================================================================
+* frontend/              -> Geoportal y Visor SIG Interactivo con mapas base y capas
+* database/              -> Script SQL PostGIS con esquemas IDERA en EPSG:22172
+* geoserver/             -> Estilos SLD IDERA y workspace de GeoServer
+* pycsw/                 -> Catálogo de metadatos CSW 2.0.2 / ISO 19115
+* nginx/                 -> Proxy inverso con soporte CORS abierto
+* docs/                  -> Manuales de arquitectura y conexión QGIS
+* docker-compose.yml     -> Pila completa para levantar en producción
+* ABRIR_VISOR.bat        -> Lanzador local para abrir el mapa en el navegador
+* ide_lujan_cuyo_idera.zip -> Archivo comprimido con todo el repositorio

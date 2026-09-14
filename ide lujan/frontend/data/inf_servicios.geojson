@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "name": "inf_servicios_lujan",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.892,
+          -33.061
+        ]
+      },
+      "properties": {
+        "nombre": "Planta Potabilizadora Aguas Luján Central",
+        "tipo": "Agua Potable",
+        "operador": "Aguas Luján Municipal",
+        "capacidad": "1.200 l/s",
+        "fuente": "Río Mendoza"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.885,
+          -33.018
+        ]
+      },
+      "properties": {
+        "nombre": "Planta de Tratamiento RSU y Puntos Verdes",
+        "tipo": "Gestión Ambiental y Residuos",
+        "operador": "Dirección de Ambiente",
+        "tipo_reciclaje": "Plástico, Vidrio, Cartón, Electrónicos"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.852,
+          -32.969
+        ]
+      },
+      "properties": {
+        "nombre": "Punto Verde Carrodilla",
+        "tipo": "Punto Verde Móvil",
+        "operador": "Luján Sustentable",
+        "residuos": "Secos Reciclables"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.874,
+          -33.005
+        ]
+      },
+      "properties": {
+        "nombre": "Punto Limpio Chacras de Coria",
+        "tipo": "Punto Limpio Fijo",
+        "operador": "Luján Sustentable",
+        "residuos": "Vidrio, Papel, Pilas, Aceite usado"
+      }
+    }
+  ]
+}

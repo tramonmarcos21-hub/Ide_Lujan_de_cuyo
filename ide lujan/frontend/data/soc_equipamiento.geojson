@@ -1,0 +1,207 @@
+{
+  "type": "FeatureCollection",
+  "name": "soc_equipamiento_lujan",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8785,
+          -33.0542
+        ]
+      },
+      "properties": {
+        "nombre": "Edificio Municipal Luján de Cuyo",
+        "categoria": "Cívico y Administrativo",
+        "subcategoria": "Palacio Municipal",
+        "direccion": "San Martín 250",
+        "distrito": "CIUDAD",
+        "telefono": "+54 261 498-9900"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8752,
+          -33.0561
+        ]
+      },
+      "properties": {
+        "nombre": "Hospital Municipal Luján",
+        "categoria": "Salud",
+        "subcategoria": "Hospital Público",
+        "direccion": "España 1500",
+        "distrito": "CIUDAD",
+        "atencion_24h": "Sí"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8741,
+          -33.0035
+        ]
+      },
+      "properties": {
+        "nombre": "Centro de Salud N° 31 Chacras de Coria",
+        "categoria": "Salud",
+        "subcategoria": "Atención Primaria CAPS",
+        "direccion": "Mazzolari s/n",
+        "distrito": "CHACRAS DE CORIA",
+        "atencion_24h": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8475,
+          -32.9665
+        ]
+      },
+      "properties": {
+        "nombre": "Centro de Salud Carrodilla N° 204",
+        "categoria": "Salud",
+        "subcategoria": "Atención Primaria CAPS",
+        "direccion": "San Martín Sur 7400",
+        "distrito": "CARRODILLA",
+        "atencion_24h": "Sí"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8821,
+          -33.0872
+        ]
+      },
+      "properties": {
+        "nombre": "Centro de Salud N° 39 Perdriel",
+        "categoria": "Salud",
+        "subcategoria": "Atención Primaria CAPS",
+        "direccion": "Ruta 15 s/n",
+        "distrito": "PERDRIEL",
+        "atencion_24h": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.192,
+          -32.958
+        ]
+      },
+      "properties": {
+        "nombre": "Centro de Salud N° 34 Potrerillos",
+        "categoria": "Salud",
+        "subcategoria": "Atención Primaria CAPS",
+        "direccion": "Villa Potrerillos",
+        "distrito": "POTRERILLOS",
+        "atencion_24h": "Sí"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8798,
+          -33.052
+        ]
+      },
+      "properties": {
+        "nombre": "Escuela N° 1-002 Gral. Manuel Belgrano",
+        "categoria": "Educación",
+        "subcategoria": "Primaria Estatal",
+        "direccion": "Sarmiento 210",
+        "distrito": "CIUDAD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.873,
+          -33.001
+        ]
+      },
+      "properties": {
+        "nombre": "Colegio San Nicolás",
+        "categoria": "Educación",
+        "subcategoria": "Secundaria / Privado",
+        "direccion": "Italia 5420",
+        "distrito": "CHACRAS DE CORIA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8795,
+          -33.0558
+        ]
+      },
+      "properties": {
+        "nombre": "Comisaría 11 Luján de Cuyo",
+        "categoria": "Seguridad",
+        "subcategoria": "Policía de Mendoza",
+        "direccion": "San Martín 150",
+        "distrito": "CIUDAD",
+        "emergencias": "911"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8755,
+          -33.0048
+        ]
+      },
+      "properties": {
+        "nombre": "Comisaría 30 Chacras de Coria",
+        "categoria": "Seguridad",
+        "subcategoria": "Policía de Mendoza",
+        "direccion": "Viamonte 5100",
+        "distrito": "CHACRAS DE CORIA",
+        "emergencias": "911"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8835,
+          -33.0515
+        ]
+      },
+      "properties": {
+        "nombre": "Polideportivo Municipal Hipólito Yrigoyen",
+        "categoria": "Deporte y Recreación",
+        "subcategoria": "Polideportivo",
+        "direccion": "Vallcanera y Guevara",
+        "distrito": "CIUDAD"
+      }
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDE Luján de Cuyo - Infraestructura de Datos Espaciales | IDERA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/ide-styles.css">
+</head>
+<body>
+
+  <!-- NAVEGACIÓN SUPERIOR -->
+  <header class="navbar">
+    <a href="index.html" class="brand-container">
+      <div class="brand-logo-badge">LC</div>
+      <div class="brand-text">
+        <h1>IDE Luján de Cuyo</h1>
+        <p>INFRAESTRUCTURA DE DATOS ESPACIALES</p>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><span class="badge-idera"><i class="fa-solid fa-circle-check"></i> Nodo IDERA</span></li>
+        <li><a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Inicio</a></li>
+        <li><a href="visor.html" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Visor SIG</a></li>
+        <li><a href="#servicios" class="nav-link"><i class="fa-solid fa-server"></i> Geoservicios OGC</a></li>
+        <li><a href="#catalogo" class="nav-link"><i class="fa-solid fa-book-bookmark"></i> Metadatos</a></li>
+        <li><a href="https://lujan3d.lujandecuyo.gob.ar/" target="_blank" class="nav-link"><i class="fa-solid fa-cubes"></i> Luján 3D</a></li>
+        <li><a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-compass"></i> Abrir Visor</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-portal">
+    <div class="hero-content">
+      <span class="badge-idera" style="margin-bottom: 1rem; display: inline-flex;"><i class="fa-solid fa-award"></i> Marco Normativo IDERA | Ley Nac. 22.963 / POSGAR 94 (EPSG:22172)</span>
+      <h1 class="hero-title">Información Geográfica Oficial de Luján de Cuyo</h1>
+      <p class="hero-subtitle">
+        Plataforma geoespacial abierta y estandarizada para la gestión del territorio, catastro parcelario, zonificación urbana, cuencas aluvionales y circuito enológico en la Tierra del Malbec.
+      </p>
+      <div class="hero-actions">
+        <a href="visor.html" class="btn btn-primary" style="font-size: 1rem; padding: 0.8rem 1.6rem;">
+          <i class="fa-solid fa-map"></i> Explorar Visor Cartográfico
+        </a>
+        <a href="https://ide.mendoza.gov.ar/" target="_blank" class="btn btn-secondary" style="font-size: 1rem; padding: 0.8rem 1.4rem;">
+          <i class="fa-solid fa-map-location-dot"></i> IDE Mendoza
+        </a>
+        <a href="https://www.idera.gob.ar" target="_blank" class="btn btn-malbec" style="font-size: 0.95rem; padding: 0.8rem 1.2rem;">
+          <i class="fa-solid fa-globe"></i> Portal Nacional IDERA
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICAS EN VIVO DE LA IDE -->
+  <div class="stats-container">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #e0f2fe; color: #0284c7;">
+          <i class="fa-solid fa-mountain-city"></i>
+        </div>
+        <div class="stat-info">
+          <h4>15</h4>
+          <p>Distritos Departamentales</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #dbeafe; color: #1d4ed8;">
+          <i class="fa-solid fa-water"></i>
+        </div>
+        <div class="stat-info">
+          <h4>7.149</h4>
+          <p>Tramos Cauces y Canales</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #fef3c7; color: #d97706;">
+          <i class="fa-solid fa-draw-polygon"></i>
+        </div>
+        <div class="stat-info">
+          <h4>252</h4>
+          <p>Parcelas Catastrales Testigo</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background: #fce7f3; color: #be185d;">
+          <i class="fa-solid fa-wine-glass"></i>
+        </div>
+        <div class="stat-info">
+          <h4>Enoturismo</h4>
+          <p>Caminos del Vino & Malbec</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS OGC (GEOSERVER) -->
+  <section id="servicios" class="section-container">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-server" style="color: var(--lujan-cyan);"></i> Geoservicios Abiertos OGC (GeoServer)</h2>
+      <p>Servicios web interoperables conforme a estándares abiertos para su consumo en sistemas SIG de escritorio, bibliotecas web y portales federados.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- WMS -->
+      <div class="service-card">
+        <span class="service-badge badge-wms">WMS 1.3.0 / 1.1.1</span>
+        <h3>Web Map Service</h3>
+        <p>Visualización de mapas georreferenciados en formato raster/vectorial optimizado para sistemas SIG, visores web y geoservicios federados.</p>
+        <div class="copy-url-box">
+          <span class="copy-url-text" id="url-wms">https://ide.lujandecuyo.gob.ar/geoserver/ide_lujan/wms</span>
+          <button class="btn-copy" onclick="copyUrl('url-wms')" title="Copiar URL"><i class="fa-regular fa-copy"></i></button>
+        </div>
+      </div>
+
+      <!-- WFS -->
+      <div class="service-card">
+        <span class="service-badge badge-wfs">WFS 2.0.0 / 1.1.0</span>
+        <h3>Web Feature Service</h3>
+        <p>Descarga vectorial y consulta directa de atributos y geometrías en GeoJSON, GML y Shapefile.</p>
+        <div class="copy-url-box">
+          <span class="copy-url-text" id="url-wfs">https://ide.lujandecuyo.gob.ar/geoserver/ide_lujan/wfs</span>
+          <button class="btn-copy" onclick="copyUrl('url-wfs')" title="Copiar URL"><i class="fa-regular fa-copy"></i></button>
+        </div>
+      </div>
+
+      <!-- CSW -->
+      <div class="service-card">
+        <span class="service-badge badge-csw">CSW 2.0.2 / pycsw</span>
+        <h3>Catálogo de Metadatos</h3>
+        <p>Servicio de catálogo OGC cosechable para federación en el Geoportal Nacional de IDERA e IDE Mendoza (ISO 19115).</p>
+        <div class="copy-url-box">
+          <span class="copy-url-text" id="url-csw">https://ide.lujandecuyo.gob.ar/csw</span>
+          <button class="btn-copy" onclick="copyUrl('url-csw')" title="Copiar URL"><i class="fa-regular fa-copy"></i></button>
+        </div>
+      </div>
+
+      <!-- WMTS -->
+      <div class="service-card">
+        <span class="service-badge badge-wmts">WMTS 1.0.0 / GWC</span>
+        <h3>Teselas en Caché</h3>
+        <p>Servicio de mapas teselados de alta velocidad mediante GeoWebCache para aplicaciones de alta concurrencia.</p>
+        <div class="copy-url-box">
+          <span class="copy-url-text" id="url-wmts">https://ide.lujandecuyo.gob.ar/geoserver/gwc/service/wmts</span>
+          <button class="btn-copy" onclick="copyUrl('url-wmts')" title="Copiar URL"><i class="fa-regular fa-copy"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUT INTEROPERABILIDAD IDE MENDOZA E IDERA -->
+    <div style="background: #ffffff; border: 1px solid var(--lujan-border); border-left: 4px solid var(--lujan-secondary); border-radius: 8px; padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h4 style="font-size: 1.05rem; color: var(--lujan-primary); margin-bottom: 0.2rem;"><i class="fa-solid fa-network-wired"></i> Red de Infraestructuras de Datos Espaciales</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin: 0;">El Nodo IDE de Luján de Cuyo está plenamente integrado e interoperable con la <strong>IDE Mendoza (IDEM)</strong> y el <strong>Geoportal Nacional de IDERA</strong>, garantizando estándares abiertos y soberanía de la información geográfica pública.</p>
+      </div>
+      <div style="display: flex; gap: 0.75rem;">
+        <a href="https://ide.mendoza.gov.ar/" target="_blank" class="btn btn-secondary btn-sm"><i class="fa-solid fa-arrow-up-right-from-square"></i> Portal IDE Mendoza</a>
+        <a href="https://www.idera.gob.ar" target="_blank" class="btn btn-primary btn-sm"><i class="fa-solid fa-globe"></i> IDERA Nacional</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO DE CAPAS TEMÁTICAS IDERA -->
+  <section id="catalogo" class="section-container" style="background: #ffffff; border-top: 1px solid var(--lujan-border); border-bottom: 1px solid var(--lujan-border);">
+    <div class="section-header">
+      <h2><i class="fa-solid fa-layer-group" style="color: var(--lujan-gold);"></i> Catálogo de Capas IDERA</h2>
+      <p>Organizadas según el Catálogo de Objetos Geográficos de la República Argentina.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+      <div style="padding: 1.25rem; border: 1px solid var(--lujan-border); border-radius: 10px;">
+        <h4 style="font-size: 1.1rem; color: var(--lujan-primary); margin-bottom: 0.4rem;"><i class="fa-solid fa-landmark"></i> Límites Político-Administrativos (ADM)</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin-bottom: 0.8rem;">15 distritos departamentales: Ciudad, Chacras de Coria, Potrerillos, Carrodilla, Vistalba, etc. con datos poblacionales y de riesgo.</p>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="data/adm_distritos.geojson" download class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> GeoJSON</a>
+          <a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i> Ver en Mapa</a>
+        </div>
+      </div>
+
+      <div style="padding: 1.25rem; border: 1px solid var(--lujan-border); border-radius: 10px;">
+        <h4 style="font-size: 1.1rem; color: var(--lujan-primary); margin-bottom: 0.4rem;"><i class="fa-solid fa-water"></i> Red Hídrica y Drenaje (ENV)</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin-bottom: 0.8rem;">Más de 7.100 tramos de ríos, colectores aluvionales, canales e hijuelas de riego regulados por DGI y Luján de Cuyo.</p>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="data/env_red_hidrica.geojson" download class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> GeoJSON</a>
+          <a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i> Ver en Mapa</a>
+        </div>
+      </div>
+
+      <div style="padding: 1.25rem; border: 1px solid var(--lujan-border); border-radius: 10px;">
+        <h4 style="font-size: 1.1rem; color: var(--lujan-primary); margin-bottom: 0.4rem;"><i class="fa-solid fa-draw-polygon"></i> Catastro y Parcelario (CAT)</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin-bottom: 0.8rem;">Parcelas urbanas con padrón catastral municipal, nomenclatura oficial, superficies y valores fiscales.</p>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="data/cat_parcelas.geojson" download class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> GeoJSON</a>
+          <a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i> Ver en Mapa</a>
+        </div>
+      </div>
+
+      <div style="padding: 1.25rem; border: 1px solid var(--lujan-border); border-radius: 10px;">
+        <h4 style="font-size: 1.1rem; color: var(--lujan-primary); margin-bottom: 0.4rem;"><i class="fa-solid fa-building-user"></i> Zonificación Territorial (URB)</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin-bottom: 0.8rem;">Parámetros del Código Urbano (Ord. 13.820): FOS, FOT, alturas máximas, usos de suelo y áreas protegidas del piedemonte.</p>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="data/urb_zonificacion.geojson" download class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> GeoJSON</a>
+          <a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i> Ver en Mapa</a>
+        </div>
+      </div>
+
+      <div style="padding: 1.25rem; border: 1px solid var(--lujan-border); border-radius: 10px;">
+        <h4 style="font-size: 1.1rem; color: var(--lujan-primary); margin-bottom: 0.4rem;"><i class="fa-solid fa-wine-glass"></i> Bodegas y Enoturismo (TUR)</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin-bottom: 0.8rem;">Establecimientos vitivinícolas de renombre internacional, caminos del vino y atractivos de montaña (Potrerillos, Cacheuta).</p>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="data/tur_bodegas_patrimonio.geojson" download class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> GeoJSON</a>
+          <a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i> Ver en Mapa</a>
+        </div>
+      </div>
+
+      <div style="padding: 1.25rem; border: 1px solid var(--lujan-border); border-radius: 10px;">
+        <h4 style="font-size: 1.1rem; color: var(--lujan-primary); margin-bottom: 0.4rem;"><i class="fa-solid fa-hospital"></i> Equipamiento y Servicios (SOC/INF)</h4>
+        <p style="font-size: 0.85rem; color: var(--lujan-gray); margin-bottom: 0.8rem;">Hospitales, Centros de Salud CAPS 24h, comisarías, escuelas, plantas de agua y puntos verdes de reciclaje sustentable.</p>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="data/soc_equipamiento.geojson" download class="btn btn-secondary btn-sm"><i class="fa-solid fa-download"></i> GeoJSON</a>
+          <a href="visor.html" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i> Ver en Mapa</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer style="background: var(--lujan-primary); color: #94a3b8; padding: 2.5rem 1.5rem; font-size: 0.85rem;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <p style="color: #ffffff; font-weight: 700; margin-bottom: 0.25rem;">Municipalidad de Luján de Cuyo - Mendoza, Argentina</p>
+        <p>Dirección de Gestión Territorial, Catastro y Sistemas de Información Geográfica (SIG)</p>
+        <p style="margin-top: 0.4rem;">San Martín 250, Luján de Cuyo (M5507) | Tel: +54 261 498-9900 | ide@lujandecuyo.gob.ar</p>
+      </div>
+      <div>
+        <p style="color: #ffffff; font-weight: 600; margin-bottom: 0.25rem;">Marcos de Referencia:</p>
+        <p><i class="fa-solid fa-check" style="color: #10b981;"></i> IDERA (Infraestructura de Datos Espaciales de la República Argentina)</p>
+        <p><i class="fa-solid fa-check" style="color: #10b981;"></i> Sistema Oficial POSGAR 94 (EPSG:22172) / Faja 2 Gauss-Krüger (EPSG:22172)</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function copyUrl(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("¡URL copiada al portapapeles!:\n" + text);
+      }).catch(() => {
+        prompt("Copia manualmente la URL:", text);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+{
+  "type": "FeatureCollection",
+  "name": "tur_bodegas_patrimonio_lujan",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.915,
+          -33.125
+        ]
+      },
+      "properties": {
+        "nombre": "Bodega Catena Zapata",
+        "distrito": "AGRELO",
+        "enoturismo": "Sí (Visitas y Degustación)",
+        "varietal_emblema": "Malbec / Cabernet Sauvignon",
+        "arquitectura": "Pirámide Maya Neoclásica",
+        "camino_del_vino": "Circuito Agrelo Alto"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8952,
+          -33.089
+        ]
+      },
+      "properties": {
+        "nombre": "Bodega Norton",
+        "distrito": "PERDRIEL",
+        "enoturismo": "Sí (Restaurante La Vid)",
+        "varietal_emblema": "Malbec D.O.C. Luján de Cuyo",
+        "antiguedad": "Fundada en 1895",
+        "camino_del_vino": "Circuito Perdriel Río Mendoza"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.902,
+          -33.118
+        ]
+      },
+      "properties": {
+        "nombre": "Bodega Chandon",
+        "distrito": "AGRELO",
+        "enoturismo": "Sí (Especialidad Espumantes)",
+        "varietal_emblema": "Chardonnay / Pinot Noir",
+        "camino_del_vino": "Circuito Agrelo"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.908,
+          -33.023
+        ]
+      },
+      "properties": {
+        "nombre": "Bodega Vistalba",
+        "distrito": "VISTALBA",
+        "enoturismo": "Sí (Restaurante)",
+        "varietal_emblema": "Blends de Terroir / Malbec",
+        "camino_del_vino": "Circuito Vistalba"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.883,
+          -33.011
+        ]
+      },
+      "properties": {
+        "nombre": "Bodega Nieto Senetiner",
+        "distrito": "VISTALBA",
+        "enoturismo": "Sí (Cava Histórica)",
+        "varietal_emblema": "Bonarda / Malbec",
+        "camino_del_vino": "Circuito Vistalba Histórico"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.889,
+          -33.002
+        ]
+      },
+      "properties": {
+        "nombre": "Bodega Clos de Chacras",
+        "distrito": "CHACRAS DE CORIA",
+        "enoturismo": "Sí (Restaurante de Cava)",
+        "varietal_emblema": "Gran Estirpe Malbec",
+        "camino_del_vino": "Circuito Urbano Chacras"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.185,
+          -32.962
+        ]
+      },
+      "properties": {
+        "nombre": "Perilago y Dique Potrerillos",
+        "distrito": "POTRERILLOS",
+        "categoria": "Atractivo Natural y Aventura",
+        "actividades": "Kayak, Kitesurf, Senderismo, Miradores",
+        "camino_del_vino": "Corredor Alta Montaña RN7"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.112,
+          -33.015
+        ]
+      },
+      "properties": {
+        "nombre": "Termas de Cacheuta",
+        "distrito": "CACHEUTA",
+        "categoria": "Turismo Termal y Bienestar",
+        "actividades": "Parque de Agua Termal, Spa de Fangoterapia",
+        "camino_del_vino": "Corredor RP82 Panamericana"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -68.8805,
+          -33.0545
+        ]
+      },
+      "properties": {
+        "nombre": "Museo y Archivo Histórico de Luján",
+        "distrito": "CIUDAD",
+        "categoria": "Patrimonio Cultural",
+        "direccion": "Taboada y San Martín",
+        "camino_del_vino": "Circuito Cívico"
+      }
+    }
+  ]
+}
