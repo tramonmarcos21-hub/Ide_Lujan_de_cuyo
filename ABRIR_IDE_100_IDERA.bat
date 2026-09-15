@@ -1,3 +1,0 @@
-@echo off
-echo Abriendo IDE Lujan de Cuyo 100% IDERA...
-start "" "IDE_Lujan_de_Cuyo_100_IDERA_Funcional.html"
